@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function Scanner() {
   const [image, setImage] = useState(null);
@@ -43,7 +44,7 @@ export default function Scanner() {
     <div className="min-h-screen flex flex-col items-center px-4 py-10 bg-gray-50 text-center">
       <h1 className="text-3xl font-bold mb-4 text-gray-800">Scan Your Ingredients</h1>
       <p className="text-gray-600 mb-6 max-w-md">
-        Upload a photo of your ingredients, and we'll suggest delicious recipes powered by AI!
+        Upload a photo of your ingredients, and we&apos;ll suggest delicious recipes powered by AI!
       </p>
 
       <input
@@ -54,11 +55,14 @@ export default function Scanner() {
       />
 
       {image && (
-        <img
-          src={image}
-          alt="Selected ingredients"
-          className="w-64 h-64 object-cover rounded-lg shadow mb-4"
-        />
+        <div className="relative w-64 h-64 mb-4">
+          <Image
+            src={image}
+            alt="Selected ingredients"
+            fill
+            className="object-cover rounded-lg shadow"
+          />
+        </div>
       )}
 
       <button
